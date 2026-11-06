@@ -1,31 +1,31 @@
 while True:
     ENTRADA = float(input("ENTRADA DO MÊS: "))
-    if ENTRADA > 0:
+    if ENTRADA >= 0:
         break
     print("")
 
 
 while True:
     ALIMENTACAO = float(input("ENTRADA DA ALIMENTAÇÃO: "))
-    if ALIMENTACAO > 0:
+    if ALIMENTACAO >= 0:
      break
     print("valor invalido")
 
 while True:
     DESPESAS = float(input("ENTRADA DAS DESPESAS: "))
-    if DESPESAS > 0:
+    if DESPESAS >= 0:
         break
     print("Valor Invalido")
 
 while True:
     LAZER = float(input("ENTRADA DO LAZER: "))
-    if LAZER > 0:
+    if LAZER >= 0:
      break
     print("Valor Invalido")
 
 while True:
     TRANSPORTE = float(input("ENTRADA DO TRANSPORTE: "))
-    if TRANSPORTE > 0:
+    if TRANSPORTE >= 0:
      break
  
     print("Valor Invalido")
