@@ -1,9 +1,8 @@
 while True:
-    ENTRADA = float(input("ENTRADA DO MÊS: "))
+    ENTRADA = float(input("ENTRADA DO MÊS: ").strip().replace(',', '.'))
     if ENTRADA >= 0:
         break
     print("")
-
 
 while True:
     try:
@@ -25,7 +24,7 @@ while True:
 
 while True:
     try:
-     LAZER = float(input("ENTRADA DO LAZER: "))
+     LAZER = float(input("ENTRADA DO LAZER: ").strip().replace(',', '.'))
      if LAZER >= 0:
        break
      print("Valor Invalido")
@@ -73,15 +72,48 @@ def PE(saldo):
 
 emergencia, investimento, restante= PE(saldo)
 
+descricao = input("Descrição do gasto: ")
+categoria = input("Categoria: ")
+while True: 
+    try:
+     valor = float(input("Valor: ").strip().replace(',', '.'))
+     if valor >= 0:
+         break
+     print("não pode ser numero negativo")
+    except ValueError:
+     print("Apenas numero")
+data = input("Data (DD/MM/AAAA): ")
+ 
 gastos = []
 gasto = {
-    "descricao": "Almoço",
-    "categoria": "Alimentação",
-    "valor": 25.00,
-    "data": "08/11/2026"
+    "descricao": "descricao",
+    "categoria": "categoria",
+    "valor": valor,
+    "data": "Data"
 }
 
 gastos.append(gasto)
+categoria = categoria.strip().lower()
+
+if categoria == "lazer":
+    restante_lazer = LAZER - valor
+    print(f"Disponível para lazer: R$ {restante_lazer:.2f}")
+
+elif categoria == "despesas":
+    restante_despesas = DESPESAS - valor
+    print(f"Disponível para despesas: R$ {restante_despesas:.2f}")
+
+elif categoria == "alimentação" or categoria == "alimentacao":
+    restante_alimentacao = ALIMENTACAO - valor
+    print(f"Disponível para alimentação: R$ {restante_alimentacao:.2f}")
+
+elif categoria == "transporte":
+    restante_transporte = TRANSPORTE - valor
+    print(f"Disponível para transporte: R$ {restante_transporte:.2f}")
+
+else:
+    print("Categoria não encontrada!")
+
 
 
 print(f"\nAlimentação: R$ {ALIMENTACAO:.2f} ({P_ALIMENTACAO:.2f}%)")
