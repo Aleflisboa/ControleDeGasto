@@ -6,29 +6,40 @@ while True:
 
 
 while True:
-    ALIMENTACAO = float(input("ENTRADA DA ALIMENTAÇÃO: "))
-    if ALIMENTACAO >= 0:
-     break
-    print("valor invalido")
-
+    try:
+     ALIMENTACAO = float(input("ENTRADA DA ALIMENTAÇÃO: "))
+     if ALIMENTACAO >= 0:
+      break
+     print("Valor Invalido")
+    except ValueError:
+     print("Apenas numero")
+     
 while True:
-    DESPESAS = float(input("ENTRADA DAS DESPESAS: "))
-    if DESPESAS >= 0:
+    try:
+     DESPESAS = float(input("ENTRADA DAS DESPESAS: "))
+     if DESPESAS >= 0:
         break
-    print("Valor Invalido")
+     print("Valor Invalido")
+    except ValueError:
+     print("Apenas numero")
 
 while True:
-    LAZER = float(input("ENTRADA DO LAZER: "))
-    if LAZER >= 0:
-     break
-    print("Valor Invalido")
+    try:
+     LAZER = float(input("ENTRADA DO LAZER: "))
+     if LAZER >= 0:
+       break
+     print("Valor Invalido")
+    except ValueError:
+     print("Apenas número")
 
 while True:
-    TRANSPORTE = float(input("ENTRADA DO TRANSPORTE: "))
-    if TRANSPORTE >= 0:
-     break
- 
-    print("Valor Invalido")
+    try:
+     TRANSPORTE = float(input("ENTRADA DO TRANSPORTE: "))
+     if TRANSPORTE >= 0:
+      break
+     print("Valor Invalido")
+    except ValueError:
+        print("Apenas número")
 
 def total_despesas(alimentacao, despesas, lazer, transporte):
     total = alimentacao + despesas + lazer + transporte
@@ -61,6 +72,16 @@ def PE(saldo):
     return P_EMERGENCIA, INVESTIMENTO, saldo_final
 
 emergencia, investimento, restante= PE(saldo)
+
+gastos = []
+gasto = {
+    "descricao": "Almoço",
+    "categoria": "Alimentação",
+    "valor": 25.00,
+    "data": "08/11/2026"
+}
+
+gastos.append(gasto)
 
 
 print(f"\nAlimentação: R$ {ALIMENTACAO:.2f} ({P_ALIMENTACAO:.2f}%)")
