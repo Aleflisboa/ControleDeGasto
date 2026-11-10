@@ -1,8 +1,11 @@
 while True:
-    ENTRADA = float(input("ENTRADA DO MÊS: ").strip().replace(',', '.'))
-    if ENTRADA >= 0:
+    try:
+     ENTRADA = float(input("ENTRADA DO MÊS: ").strip().replace(',', '.'))
+     if ENTRADA >= 0:
         break
-    print("")
+     print("Valor Invalido")
+    except ValueError:
+        print("apenas numero")
 
 while True:
     try:
