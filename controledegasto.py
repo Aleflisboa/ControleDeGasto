@@ -75,48 +75,82 @@ def PE(saldo):
 
 emergencia, investimento, restante= PE(saldo)
 
-descricao = input("Descrição do gasto: ")
-categoria = input("Categoria: ")
-while True: 
-    try:
-     valor = float(input("Valor: ").strip().replace(',', '.'))
-     if valor >= 0:
-         break
-     print("não pode ser numero negativo")
-    except ValueError:
-     print("Apenas numero")
-data = input("Data (DD/MM/AAAA): ")
- 
+
+def descricao():
+    SD = input("Descrição do gasto: ")
+    return SD
+
+
+def categoria():
+    FD = input("Categoria: ").strip().lower()
+    return FD
+
+
+def receber_valor():
+    while True:
+        try:
+            valor = float(input("Valor: ").strip().replace(',', '.'))
+
+            if valor >= 0:
+                return valor
+
+            print("Não pode ser número negativo!")
+
+        except ValueError:
+            print("Apenas números!")
+
+
+
+def data():
+    DD = input("Data (DD/MM/AAAA): ")
+    return DD
+
+
+def cadastrar_gasto():
+    descricao_gasto = descricao()
+    categoria_gasto = categoria()
+    valor_gasto = receber_valor()
+    data_gasto = data()
+
+    gasto = {
+        "descricao": descricao_gasto,
+        "categoria": categoria_gasto,
+        "valor": valor_gasto,
+        "data": data_gasto
+    }
+
+    return gasto
+
+
+# Lista de gastos
 gastos = []
-gasto = {
-    "descricao": "descricao",
-    "categoria": "categoria",
-    "valor": valor,
-    "data": "Data"
-}
 
-gastos.append(gasto)
-categoria = categoria.strip().lower()
+novo_gasto = cadastrar_gasto()
+gastos.append(novo_gasto)
 
-if categoria == "lazer":
+
+# Verificando a categoria
+categoria_gasto = novo_gasto["categoria"]
+valor = novo_gasto["valor"]
+
+if categoria_gasto == "lazer":
     restante_lazer = LAZER - valor
     print(f"Disponível para lazer: R$ {restante_lazer:.2f}")
 
-elif categoria == "despesas":
+elif categoria_gasto == "despesas":
     restante_despesas = DESPESAS - valor
     print(f"Disponível para despesas: R$ {restante_despesas:.2f}")
 
-elif categoria == "alimentação" or categoria == "alimentacao":
+elif categoria_gasto in ("alimentação", "alimentacao"):
     restante_alimentacao = ALIMENTACAO - valor
     print(f"Disponível para alimentação: R$ {restante_alimentacao:.2f}")
 
-elif categoria == "transporte":
+elif categoria_gasto == "transporte":
     restante_transporte = TRANSPORTE - valor
     print(f"Disponível para transporte: R$ {restante_transporte:.2f}")
 
 else:
     print("Categoria não encontrada!")
-
 
 
 print(f"\nAlimentação: R$ {ALIMENTACAO:.2f} ({P_ALIMENTACAO:.2f}%)")
